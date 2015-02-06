@@ -13,6 +13,7 @@ class NLTKProcessor extends AbstractProcessor{
 
     // nltk can only accept tokens with part-of-speech
     // So either Penn tokens, PTB tokens, or FrameNet Tokens
+    // These three are exclusive
     public static final Set<String> ACCEPTABLE  =
             ["f.penn",
              "f.fn", "f.fntok",

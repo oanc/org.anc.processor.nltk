@@ -14,6 +14,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Maven: org.anc.tool:core:1.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.anc.tool.processor:nltk:1.1.0" level="project" />
     <orderEntry type="library" name="Maven: org.anc.tool:tool-api:1.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.xces.graf.sag:sag-impl:1.2.0" level="project" />
@@ -25,7 +26,7 @@
     <orderEntry type="library" name="Maven: org.tc37sc4.graf:graf-i18n:1.2.3" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.5" level="project" />
     <orderEntry type="library" name="Maven: org.tc37sc4.graf:graf-util:1.2.3" level="project" />
-    <orderEntry type="library" name="Maven: org.anc:common:3.0.0" level="project" />
+    <orderEntry type="library" name="Maven: org.anc:common:3.5.0" level="project" />
     <orderEntry type="library" name="Maven: org.anc:conf:2.2.0-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: org.xces.graf.sag:sag-api:1.2.0" level="project" />
     <orderEntry type="library" name="Maven: ch.qos.logback:logback-classic:1.0.11" level="project" />
