@@ -3,6 +3,7 @@ package org.anc.processor.nltk
 import org.anc.processor.nltk.i18n.Messages
 import org.junit.*
 
+import javax.naming.ConfigurationException
 import javax.ws.rs.core.Response
 
 import static org.junit.Assert.*
@@ -35,29 +36,29 @@ class ProcessorTest
     {
         //PASSING ********
         //ONE
-        def pass1 = ["f.penn"]
-        assertTrue(processor.validAnnotations(pass1, processor.ACCEPTABLE))
+        def pass1 = ["f.fn"] as List<String>
+        assertTrue(processor.validAnnotations(pass1))
 
         //FEW
-        def pass2 = ["f.penn", "f.fn", "f.ptb"]
-        assertTrue(processor.validAnnotations(pass2, processor.ACCEPTABLE))
+        def pass2 = ["f.fn", "f.fntok"] as List<String>
+        assertTrue(processor.validAnnotations(pass2))
 
         //ALL
-        def pass3 = ["f.penn", "f.fn", "f.fntok", "f.ptb", "f.ptbtok"]
-        assertTrue(processor.validAnnotations(pass3, processor.ACCEPTABLE))
+        def pass3 = ["f.ptb", "f.ptbtok"] as List<String>
+        assertTrue(processor.validAnnotations(pass3))
 
         //FAILING ********
         //NONE
-        def fail1 = [] as ArrayList<String>
-        assertFalse(processor.validAnnotations(fail1, processor.ACCEPTABLE))
+        def fail1 = [] as List<String>
+        assertFalse(processor.validAnnotations(fail1))
 
         //ALL
-        def fail2 = ["f.c5", "f.biber", "f.ne", "f.mpqa"]
-        assertFalse(processor.validAnnotations(fail2, processor.ACCEPTABLE))
+        def fail2 = ["f.c5", "f.biber", "f.ne", "f.mpqa"] as List<String>
+        assertFalse(processor.validAnnotations(fail2))
 
         //ONE WRONG IN LIST OF RIGHT
-        def fail3 = ["f.penn", "f.fn", "f.biber", "f.fntok"]
-        assertFalse(processor.validAnnotations(fail3, processor.ACCEPTABLE))
+        def fail3 = ["f.penn", "f.fn", "f.biber", "f.fntok"] as List<String>
+        assertFalse(processor.validAnnotations(fail3))
     }
 
     @Test
@@ -67,7 +68,7 @@ class ProcessorTest
     void testParseAnnotations()
     {
         //EMPTY STRING
-        assertTrue("Empty string should return all acceptable annotations", processor.parseAnnotations("") == NLTKProcessor.ACCEPTABLE.toList() )
+        assertTrue("Empty string should return all acceptable annotations", processor.parseAnnotations("") == processor.Acceptable.toList() as List<String>)
 
         //ONE WORD
         List expected = ["f.penn"]
@@ -87,7 +88,7 @@ class ProcessorTest
 
     @Test
     void testProcess() {
-        Response response = processor.process("penn", "MASC3-0202")
+        Response response = processor.process("ptb", "MASC3-0202")
         assertTrue response.entity, response.status == 200
     }
 
